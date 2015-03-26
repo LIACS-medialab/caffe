@@ -153,7 +153,7 @@ void SoftmaxWithLossLayer<Dtype>::Backward_cpu(const vector<Blob<Dtype>*>& top,
             bottom_diff[i * dim + c * spatial_dim + j] = 0;
           }
         } else {
-          /* Why -1 ? maybe related with the softmax loss equations? */
+          /* gradient = 1- p ! */
           bottom_diff[i * dim + label_value * spatial_dim + j] -= 1; 
           ++count;
         }
